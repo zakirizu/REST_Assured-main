@@ -1,7 +1,66 @@
 package files;
 
 public class payload {
+	
+	
+	public static String addBook(String isbn, String phNumber) {
+		String BookDetails = 
+				"{\n"
+				+ "\"name\"	:\"Testing Book Zakir\",\n"
+				+ "\"isbn\"	:\""+isbn+"\",\n"
+				+ "\"aisle\"	:\""+phNumber+"\",\n"
+				+ "\"author\"	:\"Zakir Husain Shaik\"\n"
+				+ "}\n"
+				+ "";
+		return BookDetails;
+	}
+	
+	public static String GroupCreation() {
+		return "{\n"
+				+ "	\"name\" : \"RestAssured26\",\n"
+				+ "	\"apis\" : [\n"
+				+ "        \n"
+				+ "		{\n"
+				+ "			\"endpoint\" : \"/ZR_Basic/1.0.0\"\n"
+				+ "		}\n"
+				+ "		\n"
+				+ "	]\n"
+				+ "}";
+	}
+	
 
+	public static String VerifyAzureOrgExists() {
+		return "{\n"
+				+ "  \"orgId\" : {\n"
+				+ "	\"infaId\" : \"lgE0vNbguanlwZiEpgueaa\",\n"
+				+ "	\"domain\" : \"apim.tlv.com\"\n"
+				+ "  },\n"
+				+ "  \"orgContact\": {\n"
+				+ "    \"orgName\": \"tlv.inner.jenkins\",\n"
+				+ "    \"email\": \"tlv.inner.jenkins@informatica.com\"\n"
+				+ "  }\n"
+				+ "}";
+	}
+	
+	
+	public static String MrelLogin() {
+		return "{\n"
+				+ "	\"@type\" : \"Login\",\n"
+				+ "	\"username\": \"apim.mrel.all\",\n"
+				+ "	\"password\": \"Inf0rmat1ca\"\n"
+				+ "}";
+	}
+	
+	
+	
+	public static String LoginAzure() {
+		return "{\n"
+				+ "	\"@type\" : \"Login\",\n"
+				+ "	\"username\": \"apim.azure.all\",\n"
+				+ "	\"password\": \"Inf0rmat1ca\"\n"
+				+ "}";
+	}
+	
 	public static String AddPlace() {
 		return "\r\n" + 
 				"  \"location\": {\r\n" + 
