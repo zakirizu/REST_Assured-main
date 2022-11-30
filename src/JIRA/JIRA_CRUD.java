@@ -1,10 +1,10 @@
 package JIRA;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;import static io.restassured.RestAssured.given;import static org.hamcrest.Matchers.equalTo;
-
+import org.testng.annotations.Test;
+import BasePkg.base;
+import static io.restassured.RestAssured.given;import static org.hamcrest.Matchers.equalTo;
 import java.io.File;
 import java.util.Stack;
-
 import static org.hamcrest.Matchers.*;import files.JIRAPayLoad;
 import files.ReUsableMethods;
 import files.payload;import io.restassured.RestAssured;
@@ -12,16 +12,8 @@ import io.restassured.filter.session.SessionFilter;
 import io.restassured.path.json.JsonPath;import static io.restassured.RestAssured.*;import files.payload;
 import io.restassured.RestAssured;
 
-public class JIRA_CRUD {
-static String CommentID;
-static String JIRASessionID ;
-static String ProjectID;
-static String JIRAName ;
-static String IssueKeyID;
-static String IssueID;
-static SessionFilter session = new SessionFilter();
-static String ProjecName = ReUsableMethods.getUniqueRandomText();
-static String ProjetKey  = ReUsableMethods.getUniqueRandomKey();
+public class JIRA_CRUD extends base{
+
 
 @Test(priority = 1)
 public static void LoginToJIRA() {
@@ -114,9 +106,6 @@ public static void addComment01() {
 }
 
 
-
-
-
 @Test(priority = 5)
 public static void UpdateComment() {
 	RestAssured.baseURI = "http://localhost:8080";
@@ -145,8 +134,7 @@ public static void getAll_IssueDetails() {
 	 RestAssured.baseURI = "http://localhost:8080";
 	
 	 given()
-	
-	
+		
 	.filter(session)
 	.when()
 	.get("/rest/api/2/issue/"+IssueID+"")
@@ -190,7 +178,7 @@ public static void getComments_Details_Only_Of_An_Issue() {
  * ******************************************************************************
  */
 @Test(priority = 8)
-public static void AddAttachment() {
+public static void BypassHTTPSCertification() {
 	//Create a File Class Object--This is bascially used to create a Object and sent file
 	//In order to java know we are sending file we will be using file class 
 	File fs = new File("C:\\Work\\RestAssured\\REST_Assured-main\\JIRA_Attachment.txt");
@@ -210,6 +198,42 @@ public static void AddAttachment() {
 	.assertThat().statusCode(200)
 	.extract().jsonPath();
 }
+
+
+/*
+ * ******************************************************************************
+ * ********************THIS IS TO BY PASS THE HTTPS CERTIFICATE******************
+ * ******************************************************************************
+ */
+@Test(priority = 9, enabled = false)
+public static void AddAttachment() {
+
+	RestAssured.baseURI = "http://localhost:8080";
+	JsonPath js = 
+	 given()//.log().all()
+	 
+	 //******************* BY PASS HTTPS VALIDATION - RELAXED HTTPS VALIDATION****
+	 .relaxedHTTPSValidation()
+	 
+	.headers("Content-Type", "application/json")
+	.body(JIRAPayLoad.getUpdateComment("Updated Automation Comments"))
+	
+	.filter(session)
+	.when()
+	.put("/rest/api/2/issue/"+IssueID+"/comment/"+CommentID+"")
+	
+	.then()
+	.assertThat().statusCode(200)
+	.extract().jsonPath();
+}
+
+
+
+
+
+
+
+
 
 
 	//iF YOU ENABLE THIS THEN YOU WILL NOT SEE ANYTHING IN THE UI 
