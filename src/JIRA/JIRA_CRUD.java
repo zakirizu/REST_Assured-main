@@ -2,6 +2,7 @@ package JIRA;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;import static io.restassured.RestAssured.given;import static org.hamcrest.Matchers.equalTo;
 
+import java.io.File;
 import java.util.Stack;
 
 import static org.hamcrest.Matchers.*;import files.JIRAPayLoad;
@@ -131,9 +132,43 @@ public static void UpdateComment() {
 	.assertThat().statusCode(200)
 	.extract().jsonPath();
 }
+
+
+/*
+ * ******************************************************************************
+ * ********************THIS IS TO VERIFY THE FILE UPLOAD ************************
+ * ******* Header ismultipart/form-data and X-atlassion with no check************
+ * ******************************************************************************
+ */
+@Test(priority = 6)
+public static void AddAttachment() {
+	//Create a File Class Object--This is bascially used to create a Object and sent file
+	//In order to java know we are sending file we will be using file class 
+	File fs = new File("C:\\Work\\RestAssured\\REST_Assured-main\\JIRA_Attachment.txt");
+	
+	RestAssured.baseURI = "http://localhost:8080";
+	JsonPath js= 
+	given().log().all()
+	.header("Content-Type","multipart/form-data")
+	.header("X-Atlassian-Token","no-check")
+	.multiPart("file", fs)
+	
+	.filter(session)
+	.when()
+	.post("/rest/api/2/issue/"+IssueID+"/attachments")
+	
+	.then().log().all()
+	.assertThat().statusCode(200)
+	.extract().jsonPath();
+		
+}
+
+
 	//iF YOU ENABLE THIS THEN YOU WILL NOT SEE ANYTHING IN THE UI 
-@Test(priority = 6, enabled = true)
-public static void DeleteProject() {
+@Test(priority = 10, enabled = true)
+public static void DeleteProject() throws InterruptedException {
+	
+	Thread.sleep(40000);
 	RestAssured.baseURI = "http://localhost:8080";
 	JsonPath js = 
 	
@@ -144,7 +179,7 @@ public static void DeleteProject() {
 	.when()
 	.delete("/rest/api/2/project/"+ProjectID+"")
 	
-	.then()
+	.then()//.log().all()
 	.assertThat().statusCode(204)
 	.extract().response().jsonPath();
 }
@@ -152,7 +187,9 @@ public static void DeleteProject() {
 	
 	
 	/*
-	 * 888888 THIS IS TO DELTE THE PROJECTS THAT WERE CREATED BY MISTAKE
+	 * ******************************************************************************
+	 * ****** THIS IS TO DELTE THE PROJECTS THAT WERE CREATED BY MISTAKE ************
+	 * ******************************************************************************
 	 *
 @Test(dataProvider = "getdata")
 public static void DeletesProject(String ID) {
