@@ -1,37 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
+<testng-results ignored="0" total="10" passed="10" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-11-30T15:25:37 IST" name="Default suite" finished-at="2022-11-30T15:26:19 IST" duration-ms="42014">
+  <suite started-at="2022-11-30T16:01:06 IST" name="Default suite" finished-at="2022-11-30T16:01:48 IST" duration-ms="42315">
     <groups>
     </groups>
-    <test started-at="2022-11-30T15:25:37 IST" name="Default test" finished-at="2022-11-30T15:26:19 IST" duration-ms="42014">
+    <test started-at="2022-11-30T16:01:06 IST" name="Default test" finished-at="2022-11-30T16:01:48 IST" duration-ms="42315">
       <class name="JIRA.JIRA_CRUD">
-        <test-method signature="LoginToJIRA()[pri:1, instance:JIRA.JIRA_CRUD@3e11f9e9]" started-at="2022-11-30T15:25:37 IST" name="LoginToJIRA" finished-at="2022-11-30T15:25:38 IST" duration-ms="1080" status="PASS">
+        <test-method signature="LoginToJIRA()[pri:1, instance:JIRA.JIRA_CRUD@32502377]" started-at="2022-11-30T16:01:06 IST" name="LoginToJIRA" finished-at="2022-11-30T16:01:07 IST" duration-ms="1127" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- LoginToJIRA -->
-        <test-method signature="createProject()[pri:2, instance:JIRA.JIRA_CRUD@3e11f9e9]" started-at="2022-11-30T15:25:38 IST" name="createProject" finished-at="2022-11-30T15:25:39 IST" duration-ms="588" status="PASS">
+        <test-method signature="createProject()[pri:2, instance:JIRA.JIRA_CRUD@32502377]" started-at="2022-11-30T16:01:07 IST" name="createProject" finished-at="2022-11-30T16:01:08 IST" duration-ms="688" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createProject -->
-        <test-method signature="createIssue()[pri:3, instance:JIRA.JIRA_CRUD@3e11f9e9]" started-at="2022-11-30T15:25:39 IST" name="createIssue" finished-at="2022-11-30T15:25:39 IST" duration-ms="72" status="PASS">
+        <test-method signature="createIssue()[pri:3, instance:JIRA.JIRA_CRUD@32502377]" started-at="2022-11-30T16:01:08 IST" name="createIssue" finished-at="2022-11-30T16:01:08 IST" duration-ms="63" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createIssue -->
-        <test-method signature="addComment()[pri:4, instance:JIRA.JIRA_CRUD@3e11f9e9]" started-at="2022-11-30T15:25:39 IST" name="addComment" finished-at="2022-11-30T15:25:39 IST" duration-ms="43" status="PASS">
+        <test-method signature="addComment01()[pri:4, instance:JIRA.JIRA_CRUD@32502377]" started-at="2022-11-30T16:01:08 IST" name="addComment01" finished-at="2022-11-30T16:01:08 IST" duration-ms="42" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addComment -->
-        <test-method signature="UpdateComment()[pri:5, instance:JIRA.JIRA_CRUD@3e11f9e9]" started-at="2022-11-30T15:25:39 IST" name="UpdateComment" finished-at="2022-11-30T15:25:39 IST" duration-ms="30" status="PASS">
+        </test-method> <!-- addComment01 -->
+        <test-method signature="addComment02()[pri:4, instance:JIRA.JIRA_CRUD@32502377]" started-at="2022-11-30T16:01:08 IST" name="addComment02" finished-at="2022-11-30T16:01:08 IST" duration-ms="37" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addComment02 -->
+        <test-method signature="UpdateComment()[pri:5, instance:JIRA.JIRA_CRUD@32502377]" started-at="2022-11-30T16:01:08 IST" name="UpdateComment" finished-at="2022-11-30T16:01:08 IST" duration-ms="40" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- UpdateComment -->
-        <test-method signature="AddAttachment()[pri:6, instance:JIRA.JIRA_CRUD@3e11f9e9]" started-at="2022-11-30T15:25:39 IST" name="AddAttachment" finished-at="2022-11-30T15:25:39 IST" duration-ms="105" status="PASS">
+        <test-method signature="getAll_IssueDetails()[pri:6, instance:JIRA.JIRA_CRUD@32502377]" started-at="2022-11-30T16:01:08 IST" name="getAll_IssueDetails" finished-at="2022-11-30T16:01:08 IST" duration-ms="16" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getAll_IssueDetails -->
+        <test-method signature="getComments_Details_Only_Of_An_Issue()[pri:7, instance:JIRA.JIRA_CRUD@32502377]" started-at="2022-11-30T16:01:08 IST" name="getComments_Details_Only_Of_An_Issue" finished-at="2022-11-30T16:01:08 IST" duration-ms="72" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getComments_Details_Only_Of_An_Issue -->
+        <test-method signature="AddAttachment()[pri:8, instance:JIRA.JIRA_CRUD@32502377]" started-at="2022-11-30T16:01:08 IST" name="AddAttachment" finished-at="2022-11-30T16:01:08 IST" duration-ms="112" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AddAttachment -->
-        <test-method signature="DeleteProject()[pri:10, instance:JIRA.JIRA_CRUD@3e11f9e9]" started-at="2022-11-30T15:25:39 IST" name="DeleteProject" finished-at="2022-11-30T15:26:19 IST" duration-ms="40064" status="PASS">
+        <test-method signature="DeleteProject()[pri:10, instance:JIRA.JIRA_CRUD@32502377]" started-at="2022-11-30T16:01:08 IST" name="DeleteProject" finished-at="2022-11-30T16:01:48 IST" duration-ms="40077" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- DeleteProject -->

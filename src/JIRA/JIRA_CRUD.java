@@ -90,17 +90,16 @@ public static void createIssue() {
 	IssueID    = js.getString("id");
 	IssueKeyID = js.getString("key");
 	System.out.println("Issue ID			= "+IssueID);
-	System.out.println("Issue Key			= "+IssueKeyID);
-	
+	System.out.println("Issue Key			= "+IssueKeyID);	
 }
 
 @Test(priority = 4)
-public static void addComment() {
+public static void addComment01() {
 	RestAssured.baseURI = "http://localhost:8080";
 	JsonPath js = 
 	 given()//.log().all()
 	.headers("Content-Type", "application/json")
-	.body(JIRAPayLoad.getAddComment("Automation Test Comments "))
+	.body(JIRAPayLoad.getAddComment("01 First Automation Test Comments "))
 	
 	.filter(session)
 	.when()
@@ -112,8 +111,10 @@ public static void addComment() {
 	
 	CommentID = js.getString("id");
 	System.out.println("Comment ID = "+CommentID);
-	
 }
+
+
+
 
 
 @Test(priority = 5)
@@ -132,6 +133,54 @@ public static void UpdateComment() {
 	.assertThat().statusCode(200)
 	.extract().jsonPath();
 }
+/*
+ * ******************************************************************************
+ * ********************THIS IS TO PUT METHOD--NO NEED OF HEADER/BODY*************
+ * ********************THIS WILL PRINT ALL FIELDS IN RESPONSE******************** 
+  * ******************************************************************************
+ */
+@Test(priority = 6)
+public static void getAll_IssueDetails() {
+	
+	 RestAssured.baseURI = "http://localhost:8080";
+	
+	 given()
+	
+	
+	.filter(session)
+	.when()
+	.get("/rest/api/2/issue/"+IssueID+"")
+	
+	.then()//.log().all()
+	.assertThat().statusCode(200)
+	.extract().response().jsonPath();
+}
+/*
+ * ******************************************************************************
+ * ********************LIMIT THE RESPONSE AND DEFINE WHAT WE WANT TO SEE*********
+ * ********************THIS IS TO PUT METHOD--NO NEED OF HEADER/BODY*************
+ * ********************THIS WILL PRINT ONLY COMMENTES FIELDS IN RESPONSE********* 
+  * *****************************************************************************
+ */
+@Test(priority = 7)
+public static void getComments_Details_Only_Of_An_Issue() {
+	RestAssured.baseURI = "http://localhost:8080";
+	JsonPath js = 
+	given()
+	.queryParam("fields", "comment")
+	
+	.filter(session)
+	.when()
+	.get("/rest/api/2/issue/"+IssueID+"")
+	
+	.then()//.log().all()
+	.assertThat().statusCode(200)
+	.extract().response().jsonPath();
+	
+	String commentAdded = js.getString("fields.comment.comments[0].body");
+	System.out.println("Reading the Comment from JSON = "+commentAdded);
+}
+
 
 
 /*
@@ -140,7 +189,7 @@ public static void UpdateComment() {
  * ******* Header ismultipart/form-data and X-atlassion with no check************
  * ******************************************************************************
  */
-@Test(priority = 6)
+@Test(priority = 8)
 public static void AddAttachment() {
 	//Create a File Class Object--This is bascially used to create a Object and sent file
 	//In order to java know we are sending file we will be using file class 
@@ -148,7 +197,7 @@ public static void AddAttachment() {
 	
 	RestAssured.baseURI = "http://localhost:8080";
 	JsonPath js= 
-	given().log().all()
+	given()//.log().all()
 	.header("Content-Type","multipart/form-data")
 	.header("X-Atlassian-Token","no-check")
 	.multiPart("file", fs)
@@ -157,10 +206,9 @@ public static void AddAttachment() {
 	.when()
 	.post("/rest/api/2/issue/"+IssueID+"/attachments")
 	
-	.then().log().all()
+	.then()//.log().all()
 	.assertThat().statusCode(200)
 	.extract().jsonPath();
-		
 }
 
 

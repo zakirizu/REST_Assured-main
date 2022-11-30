@@ -5,7 +5,7 @@
     <classes>
       <class name="JIRA.JIRA_CRUD">
         <methods>
-          <include name="DeleteProject"/>
+          <include name="getAll_IssueDetails"/>
         </methods>
       </class> <!-- JIRA.JIRA_CRUD -->
     </classes>
