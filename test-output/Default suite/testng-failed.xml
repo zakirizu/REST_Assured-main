@@ -5,7 +5,15 @@
     <classes>
       <class name="JIRA.JIRA_CRUD">
         <methods>
+          <include name="createProject"/>
+          <include name="addComment01"/>
+          <include name="UpdateComment"/>
           <include name="getAll_IssueDetails"/>
+          <include name="createIssue"/>
+          <include name="BypassHTTPSCertification"/>
+          <include name="DeleteProject"/>
+          <include name="getComments_Details_Only_Of_An_Issue"/>
+          <include name="LoginToJIRA"/>
         </methods>
       </class> <!-- JIRA.JIRA_CRUD -->
     </classes>

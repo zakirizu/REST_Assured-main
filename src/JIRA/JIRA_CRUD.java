@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import BasePkg.base;
 import static io.restassured.RestAssured.given;import static org.hamcrest.Matchers.equalTo;
 import java.io.File;
+import java.util.Calendar;
 import java.util.Stack;
 import static org.hamcrest.Matchers.*;import files.JIRAPayLoad;
 import files.ReUsableMethods;
@@ -13,7 +14,7 @@ import io.restassured.path.json.JsonPath;import static io.restassured.RestAssure
 import io.restassured.RestAssured;
 
 public class JIRA_CRUD extends base{
-
+	static long startTime = Calendar.getInstance().getTimeInMillis();
 
 @Test(priority = 1)
 public static void LoginToJIRA() {
@@ -228,19 +229,11 @@ public static void AddAttachment() {
 }
 
 
-
-
-
-
-
-
-
-
 	//iF YOU ENABLE THIS THEN YOU WILL NOT SEE ANYTHING IN THE UI 
 @Test(priority = 10, enabled = true)
 public static void DeleteProject() throws InterruptedException {
 	
-	Thread.sleep(40000);
+	Thread.sleep(30000);
 	RestAssured.baseURI = "http://localhost:8080";
 	JsonPath js = 
 	
@@ -254,9 +247,23 @@ public static void DeleteProject() throws InterruptedException {
 	.then()//.log().all()
 	.assertThat().statusCode(204)
 	.extract().response().jsonPath();
+	
+	
+	long endtime = Calendar.getInstance().getTimeInMillis();	
+	long totalTime = ((endtime-startTime)/1000) ;
+	System.out.println("Total Time Taken to Execute in Seconds = " +totalTime);
+	
+	
 }
 	
+
+
 	
+	
+}
+
+
+//System.out.println
 	
 	/*
 	 * ******************************************************************************
@@ -323,6 +330,4 @@ public static Object[] data(){
 	
 	
 	
-	
-	
-}
+
