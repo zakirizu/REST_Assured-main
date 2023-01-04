@@ -1,0 +1,39 @@
+(//xpath)[2] -- 2nd element
+
+WebDriver driver = new ChromeDriver();
+WebElement ele = driver.findElement("xpath");
+
+/////
+
+Select sc = new Select(ele);
+ele.SelectByVisibletText();
+
+
+ele.sendKeys
+
+List<WebElement> listofElements = driver.findElements(By.Xpath());
+//int count = listofElements.size();
+listofElements.get(3).click();
+
+
+
+WebDriver driver = new ChromeDriver();
+
+driver.switchToFrame(id);
+
+driver.switchToFrame(NameOfFrmea);
+
+
+driver.switchToFrame(WebElement);
+
+
+Select Count(*) as count from EmployeeTable having count(*)>1;
+
+
+
+
+
+
+
+
+
