@@ -1,7 +1,7 @@
 package BasePkg;
 
 import files.ReUsableMethods;
-import io.restassured.filter.session.SessionFilter;
+
 
 public class base {
 	
@@ -11,7 +11,7 @@ public class base {
 	protected static String JIRAName ;
 	protected static String IssueKeyID;
 	protected static String IssueID;
-	protected static SessionFilter session = new SessionFilter();
+	//protected static SessionFilter session = new SessionFilter();
 	protected static String ProjecName = ReUsableMethods.getUniqueRandomText();
 	protected static String ProjetKey  = ReUsableMethods.getUniqueRandomKey();
 	

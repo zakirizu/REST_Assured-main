@@ -9,16 +9,19 @@ import java.util.Stack;
 import static org.hamcrest.Matchers.*;import files.JIRAPayLoad;
 import files.ReUsableMethods;
 import files.payload;import io.restassured.RestAssured;
+import io.restassured.filter.Filter;
 import io.restassured.filter.session.SessionFilter;
 import io.restassured.path.json.JsonPath;import static io.restassured.RestAssured.*;import files.payload;
 import io.restassured.RestAssured;
 
 public class JIRA_CRUD extends base{
 	static long startTime = Calendar.getInstance().getTimeInMillis();
+	static Filter session = null;
 
 @Test(priority = 1)
 public static void LoginToJIRA() {
 	RestAssured.baseURI = "http://localhost:8080";
+	
 	JsonPath js = 
 	
 	 given()//.log().all()

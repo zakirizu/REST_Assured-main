@@ -21,6 +21,8 @@ public class Informatica {
 
 @Test(priority = 1)
 public static void GettingSessionID() {
+	
+	
 	RestAssured.baseURI = Baseurl;	
 	JsonPath js =
 	

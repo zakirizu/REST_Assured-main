@@ -24,6 +24,7 @@ public class MyFristTestCase {
 		RestAssured.baseURI= "https://rahulshettyacademy.com";
 		
 		JsonPath js =  
+				
 		given()
 		.log().all()		
 		.header("Content-Type","application/json")
@@ -33,6 +34,8 @@ public class MyFristTestCase {
 		
 		.then()
 		.assertThat().statusCode(200)
+		
+		//in that case
 		.extract().response().jsonPath();
 	
 		System.out.println(js.getString("place_id"));
